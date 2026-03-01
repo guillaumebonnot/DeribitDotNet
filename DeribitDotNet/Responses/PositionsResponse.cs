@@ -18,7 +18,7 @@ namespace DeribitDotNet.Responses
         public Direction Direction;
 
         [JsonProperty("estimated_liquidation_price")]
-        public double EstimatedLiquidationPrice;
+        public double? EstimatedLiquidationPrice;
 
         [JsonProperty("floating_profit_loss")]
         public double UnrealisedPnl;
