@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using DeribitDotNet.Responses;
 using Newtonsoft.Json;
 
@@ -18,6 +19,11 @@ namespace DeribitDotNet.JsonConverters
             return stringValue == "zero" ? Direction.Buy : Enum.Parse(typeof(Direction), stringValue, true);
         }
 
-        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serialiser) => throw new NotImplementedException();
+        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serialiser)
+        {
+            Debug.Assert(value is Direction);
+            var direction = (Direction)value;
+            writer.WriteValue(direction.ToString().ToLower());
+        }
     }
 }
